@@ -1,0 +1,91 @@
+\usepackage{tikz}
+
+\usepackage{libertine}
+
+\setbeamertemplate{frametitle}{} % no titles
+\setbeamertemplate{navigation symbols}{} % no navigation symbols
+
+\definecolor{green}{cmyk}{1.0,0,0.6,0} % KIT 100% green
+\definecolor{lightgreen}{cmyk}{0.7,0,0.42,0} % KIT 70% green
+
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=green}
+\setbeamercolor{section in toc}{fg=green}
+\setbeamercolor{itemize item}{fg=lightgreen}
+\setbeamercolor{itemize subitem}{fg=lightgreen}
+\setbeamercolor{itemize subsubitem}{fg=lightgreen}
+\setbeamercolor{enumerate item}{fg=lightgreen}
+\setbeamercolor{enumerate subitem}{fg=lightgreen}
+\setbeamercolor{enumerate subsubitem}{fg=lightgreen}
+
+\setbeamerfont{normal text}{size=\Huge}
+\setbeamerfont{itemize items}{size=\Huge}
+\setbeamerfont*{quote}{size=\large,family*=cmr,shape=\itshape,series=\bfseries} % Times
+
+\renewcommand{\tiny}{\fontsize{7pt}{8pt}\selectfont}
+\renewcommand{\scriptsize}{\fontsize{9pt}{12pt}\selectfont}
+\renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont}
+\renewcommand{\small}{\fontsize{12pt}{18pt}\selectfont}
+\renewcommand{\normalsize}{\fontsize{14pt}{18pt}\selectfont}
+\renewcommand{\large}{\fontsize{16pt}{24pt}\selectfont}
+\renewcommand{\Large}{\fontsize{24pt}{37pt}\selectfont}
+\renewcommand{\LARGE}{\fontsize{36pt}{48pt}\selectfont}
+\renewcommand{\huge}{\fontsize{48pt}{54pt}\selectfont}
+\renewcommand{\Huge}{\fontsize{80pt}{96pt}\selectfont}
+
+\setbeamertemplate{quote begin}{\begin{tikzpicture}[remember picture,overlay] 
+	\node[text opacity=0.2,xshift=2cm] at (current page.west) {\fontsize{400pt}{96pt}\selectfont ''};
+	\end{tikzpicture}}
+\setbeamertemplate{quote end}{}
+
+\setbeamertemplate{title page}
+{
+% background image on title page:
+%	\begin{tikzpicture}[overlay]
+%		\node[inner sep=0pt] at (5.39,-4.45) {\includegraphics[width=1.01\paperwidth]{background_c3}};
+%	\end{tikzpicture}
+   ~
+
+	\vskip2cm
+	\begin{center}
+		{\Large\inserttitle} \\
+		\insertsubtitle
+
+		\vskip1.6cm
+		{\small \bf \insertauthor} \\
+		{\tiny \insertinstitute} \\
+		{\tiny \insertdate}
+	\end{center}
+}
+
+%%% An imageframe has one fullscreen image as background
+%%% and maybe some text on top.
+\newenvironment{imageframe}[1]
+	{
+		\setbeamertemplate{background}{%
+			\parbox[c][\paperheight]{\paperwidth}{%
+				\includegraphics[width=\paperwidth,height=\paperheight]{#1}
+		}}
+		\begin{frame}
+		\color{white}
+	}{\end{frame}}
+
+%%% A wordframe has one word (or few) big and centered
+\newenvironment{wordframe}
+	{
+		\begin{frame}
+		\bf\fontsize{80pt}{90pt}\selectfont
+	}{\end{frame}}
+
+%%% A defnframe defines a word or phrase
+\newenvironment{defnframe}[1]
+	{
+		\begin{frame}
+		\textbf{\Large #1:} \\
+		\vskip0.5cm
+		\Large\fontfamily{cmr}\selectfont\bfseries\itshape
+	}{\end{frame}}
+
+\newcommand{\emptyslide}{\begin{frame}[plain]\end{frame}}
+
