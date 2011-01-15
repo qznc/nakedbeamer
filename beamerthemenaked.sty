@@ -1,27 +1,32 @@
 \usepackage{tikz}
 
-\usepackage{libertine}
-
 \setbeamertemplate{frametitle}{} % no titles
 \setbeamertemplate{navigation symbols}{} % no navigation symbols
 
-\definecolor{green}{cmyk}{1.0,0,0.6,0} % KIT 100% green
-\definecolor{lightgreen}{cmyk}{0.7,0,0.42,0} % KIT 70% green
+% default colors (black on white)
+\definecolor{darkgray}{cmyk}{0.7,0.7,0.7,0} 
+\definecolor{gray}{cmyk}{0.3,0.3,0.3,0} 
 
 \setbeamercolor{background canvas}{bg=white}
 \setbeamercolor{normal text}{fg=black}
-\setbeamercolor{alerted text}{fg=green}
-\setbeamercolor{section in toc}{fg=green}
-\setbeamercolor{itemize item}{fg=lightgreen}
-\setbeamercolor{itemize subitem}{fg=lightgreen}
-\setbeamercolor{itemize subsubitem}{fg=lightgreen}
-\setbeamercolor{enumerate item}{fg=lightgreen}
-\setbeamercolor{enumerate subitem}{fg=lightgreen}
-\setbeamercolor{enumerate subsubitem}{fg=lightgreen}
+\setbeamercolor{alerted text}{fg=gray}
+\setbeamercolor{section in toc}{fg=gray}
+\setbeamercolor{box title}{fg=gray}
 
-\setbeamerfont{normal text}{size=\Huge}
-\setbeamerfont{itemize items}{size=\Huge}
-\setbeamerfont*{quote}{size=\large,family*=cmr,shape=\itshape,series=\bfseries} % Times
+\setbeamercolor{block title}{fg=darkgray}
+\setbeamercolor{block title alerted}{fg=red}
+\setbeamercolor{block title example}{use=block title}
+
+\setbeamercolor{itemize item}{fg=gray}
+\setbeamercolor{itemize subitem}{fg=gray}
+\setbeamercolor{itemize subsubitem}{fg=gray}
+
+\setbeamercolor{enumerate item}{fg=darkgray}
+\setbeamercolor{enumerate subitem}{fg=darkgray}
+\setbeamercolor{enumerate subsubitem}{fg=darkgray}
+
+% default font choices
+\usepackage{venturis}
 
 \renewcommand{\tiny}{\fontsize{7pt}{8pt}\selectfont}
 \renewcommand{\scriptsize}{\fontsize{9pt}{12pt}\selectfont}
@@ -34,8 +39,12 @@
 \renewcommand{\huge}{\fontsize{48pt}{54pt}\selectfont}
 \renewcommand{\Huge}{\fontsize{80pt}{96pt}\selectfont}
 
+\setbeamerfont{enumerate item}{size=\LARGE}
+\setbeamerfont*{quote}{size=\large,shape=\itshape,series=\bfseries}
+\setbeamerfont{word frame}{size=\Huge}
+
 \setbeamertemplate{quote begin}{\begin{tikzpicture}[remember picture,overlay] 
-	\node[text opacity=0.2,xshift=2cm] at (current page.west) {\fontsize{400pt}{96pt}\selectfont ''};
+	\node[text opacity=0.2,xshift=2cm] at (current page.west) {\fontfamily{ptm}\fontsize{400pt}{96pt}\selectfont ''};
 	\end{tikzpicture}}
 \setbeamertemplate{quote end}{}
 
@@ -52,9 +61,9 @@
 		{\Large\inserttitle} \\
 		\insertsubtitle
 
-		\vskip1.6cm
-		{\small \bf \insertauthor} \\
-		{\tiny \insertinstitute} \\
+		\vskip1.6cm\par
+		{\small \bf \insertauthor} \par
+		{\tiny \insertinstitute} \par
 		{\tiny \insertdate}
 	\end{center}
 }
@@ -75,16 +84,16 @@
 \newenvironment{wordframe}
 	{
 		\begin{frame}
-		\bf\fontsize{80pt}{90pt}\selectfont
+		\bf\usebeamerfont{word frame}
 	}{\end{frame}}
 
 %%% A defnframe defines a word or phrase
 \newenvironment{defnframe}[1]
 	{
 		\begin{frame}
-		\textbf{\Large #1:} \\
-		\vskip0.5cm
-		\Large\fontfamily{cmr}\selectfont\bfseries\itshape
+      \usebeamerfont{title}\usebeamercolor[fg]{box title}\Large #1: \\
+		\vskip0.7cm
+		\usebeamercolor[fg]{normal text}\Large\itshape
 	}{\end{frame}}
 
 \newcommand{\emptyslide}{\begin{frame}[plain]\end{frame}}
