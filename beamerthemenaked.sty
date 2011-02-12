@@ -6,6 +6,7 @@
 % default colors (black on white)
 \definecolor{darkgray}{cmyk}{0.7,0.7,0.7,0}
 \definecolor{gray}{cmyk}{0.3,0.3,0.3,0}
+\definecolor{lightgray}{cmyk}{0.1,0.1,0.1,0}
 
 \setbeamercolor{background canvas}{bg=white}
 \setbeamercolor{normal text}{fg=black}
@@ -13,8 +14,8 @@
 \setbeamercolor{section in toc}{fg=gray}
 \setbeamercolor{box title}{fg=gray}
 
-\setbeamercolor{block title}{fg=darkgray}
-\setbeamercolor{block title alerted}{fg=red}
+\setbeamercolor{block title}{bg=lightgray,fg=black}
+\setbeamercolor{block title alerted}{use=block title,fg=red}
 \setbeamercolor{block title example}{use=block title}
 
 \setbeamercolor{itemize item}{fg=gray}
@@ -47,6 +48,8 @@
 	\node[text opacity=0.2,xshift=2cm] at (current page.west) {\fontfamily{ptm}\fontsize{400pt}{96pt}\selectfont ''};
 	\end{tikzpicture}}
 \setbeamertemplate{quote end}{}
+
+\setbeamertemplate{blocks}[rounded]
 
 \setbeamertemplate{title page}
 {
